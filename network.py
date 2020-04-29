@@ -8,6 +8,10 @@ class Flatten(nn.Module):
     def forward(self, x):
         return x.view(x.size(0), -1)
 
+class AvgPool(nn.Module):
+    def forward(self, x):
+        return F.avg_pool3d(x, x.shape[2:])
+
 class _3d_cnn(nn.Module):
     def __init__(self, input_shape, output_dim):
         """
